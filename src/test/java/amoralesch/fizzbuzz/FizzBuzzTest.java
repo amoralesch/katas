@@ -1,4 +1,4 @@
-package amoralesch;
+package amoralesch.fizzbuzz;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -12,7 +12,7 @@ class FizzBuzzTest {
     assertThatThrownBy(() -> FizzBuzz.of(-1))
       .isInstanceOf(IllegalArgumentException.class);
   }
-  
+
   @Test
   void of_ThrowsException_WhenNumberIsZero()
   {

@@ -1,4 +1,4 @@
-package amoralesch;
+package amoralesch.fizzbuzz;
 
 public class FizzBuzz {
   public static String of(int n)
