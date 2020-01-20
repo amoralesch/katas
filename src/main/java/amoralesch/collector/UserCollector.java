@@ -1,6 +1,7 @@
 package amoralesch.collector;
 
 import static java.util.Objects.requireNonNull;
+import static java.util.stream.Collectors.toSet;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +11,12 @@ import java.util.function.BinaryOperator;
 import java.util.function.Function;
 import java.util.function.Supplier;
 import java.util.stream.Collector;
+import java.util.stream.Stream;
 
 class UserCollector implements Collector<User, List<User>, List<User>> {
   @Override
   public Set<Characteristics> characteristics() {
-    return Set.of(Characteristics.IDENTITY_FINISH);
+    return Stream.of(Characteristics.IDENTITY_FINISH).collect(toSet());
   }
 
   @Override
