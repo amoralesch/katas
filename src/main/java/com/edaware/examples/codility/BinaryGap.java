@@ -1,5 +1,4 @@
 package com.edaware.examples.codility;
 
-public class AppTest
-{
+public class BinaryGap {
 }
