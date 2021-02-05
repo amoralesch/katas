@@ -15,7 +15,24 @@ public class BinaryGap {
     return result.toString();
   }
 
-	// public Object calculate(int i) {
-	// 	return null;
-	// }
+  public int gapOf(int number) {
+    if (number <= 0)
+      throw new IllegalArgumentException("number has to be positive");
+
+    String binary = toBinary(number);
+    int maxGap = 0;
+    int currentGap = 0;
+
+    for (char c: binary.toCharArray())
+      if (c == '0')
+        currentGap++;
+      else {
+        if (currentGap > maxGap)
+          maxGap = currentGap;
+
+        currentGap = 0;
+      }
+
+    return maxGap;
+  }
 }

@@ -7,10 +7,10 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 class BinaryGapTest {
+  private final BinaryGap bg = new BinaryGap();
+
   @Nested
   class toBinary {
-    private BinaryGap bg = new BinaryGap();
-
     @Test
     void throwsException_WhenZeroOrNegativeNumbers()
     {
@@ -21,7 +21,7 @@ class BinaryGapTest {
     }
 
     @Test
-    void formatsNumberInBinary_Always()
+    void formatsNumberInBinary_WhenNumberIsPositive()
     {
       assertThat(bg.toBinary(1)).isEqualTo("1");
       assertThat(bg.toBinary(3)).isEqualTo("11");
@@ -46,17 +46,27 @@ class BinaryGapTest {
     }
   }
 
-  // @Test
-  // void calculate_ReturnsCorrectValue_Always()
-  // {
-  //   BinaryGap bg = new BinaryGap();
+  @Nested
+  class gapOf {
+    @Test
+    void throwsException_WhenZeroOrNegativeNumbers()
+    {
+      assertThatThrownBy(() -> bg.gapOf(0))
+        .isInstanceOf(IllegalArgumentException.class);
+      assertThatThrownBy(() -> bg.gapOf(-1))
+        .isInstanceOf(IllegalArgumentException.class);
+    }
 
-  //   assertThat(bg.calculate(9)).isEqualTo(2);
-  //   assertThat(bg.calculate(529)).isEqualTo(4);
-  //   assertThat(bg.calculate(20)).isEqualTo(1);
-  //   assertThat(bg.calculate(15)).isEqualTo(0);
-  //   assertThat(bg.calculate(32)).isEqualTo(0);
-  //   assertThat(bg.calculate(1041)).isEqualTo(5);
-  //   assertThat(bg.calculate(32)).isEqualTo(0);
-  // }
+    @Test
+    void returnsCorrectValue_WhenNumberIsPositive()
+    {
+      assertThat(bg.gapOf(9)).isEqualTo(2);
+      assertThat(bg.gapOf(529)).isEqualTo(4);
+      assertThat(bg.gapOf(20)).isEqualTo(1);
+      assertThat(bg.gapOf(15)).isEqualTo(0);
+      assertThat(bg.gapOf(32)).isEqualTo(0);
+      assertThat(bg.gapOf(1041)).isEqualTo(5);
+      assertThat(bg.gapOf(32)).isEqualTo(0);
+    }
+  }
 }
