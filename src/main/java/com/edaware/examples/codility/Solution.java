@@ -2,10 +2,11 @@ package com.edaware.examples.codility;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Solution {
   private static final int MAX_CHARS = 300000;
-
-  private static final int NUM_CHARS = 'z' - 'a';
 
   public int solution(String S) {
     requireNonNull(S, "string may not be null");
@@ -13,33 +14,41 @@ class Solution {
     if (S.length() > MAX_CHARS)
       throw new IllegalArgumentException("string is too big");
 
-    int[] letters = new int[NUM_CHARS + 1];
+    int charsToRemove = 0;
+    List<Character> charSeen = new ArrayList<>();
+    List<Integer> charCountSet = new ArrayList<>();
 
-    for (char c : S.toCharArray()) {
-      if (c < 'a' || c > 'z')
-        throw new IllegalArgumentException("only lowercase letters are allowed");
+    for (int i = 0; i < S.length(); i++) {
+      char thisChar = S.charAt(i);
 
-      letters[c - 'a']++;
-    }
+      if (thisChar < 'a' || thisChar > 'z')
+         throw new IllegalArgumentException("only lowercase letters are allowed");
 
-    int count = 0;
-
-    for (int i = 0; i < letters.length; i++) {
-      if (letters[i] == 0)
+      if (charSeen.contains(thisChar))
         continue;
 
-      for (int j = 0; j < letters.length; j++) {
-        if (letters[j] == 0 || i == j)
-          continue;
+      charSeen.add(thisChar);
 
-        if (letters[i] == letters[j]) {
-          letters[i--] -= 1;
-          count++;
+      int thisCharCount = 0;
+
+      for (int j = i; j < S.length(); j++)
+        if (S.charAt(j) == thisChar)
+          thisCharCount++;
+
+      while (true) {
+        if (thisCharCount == 0)
+          break;
+
+        if (charCountSet.contains(thisCharCount)) {
+          thisCharCount--;
+          charsToRemove++;
+        } else {
+          charCountSet.add(thisCharCount);
           break;
         }
       }
     }
 
-    return count;
+    return charsToRemove;
   }
 }
