@@ -1,4 +1,4 @@
-package com.edaware.examples.codility;
+package amoralesch.codility;
 
 public class BinaryGap {
   public int gapOf(int number) {

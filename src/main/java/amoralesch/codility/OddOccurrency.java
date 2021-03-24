@@ -1,4 +1,4 @@
-package com.edaware.examples.codility;
+package amoralesch.codility;
 
 import static java.util.Objects.requireNonNull;
 

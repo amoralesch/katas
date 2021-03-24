@@ -1,4 +1,4 @@
-package com.edaware.examples.codility;
+package amoralesch.codility;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

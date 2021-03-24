@@ -1,4 +1,4 @@
-package com.edaware.examples.codility;
+package amoralesch.codility;
 
 public class FrogJmp {
   public int solution(int X, int Y, int D)
