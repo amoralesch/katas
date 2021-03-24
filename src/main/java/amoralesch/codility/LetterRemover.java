@@ -5,10 +5,10 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution {
+class LetterRemover {
   private static final int MAX_CHARS = 300000;
 
-  public int solution(String S) {
+  public int charsCountToRemove(String S) {
     requireNonNull(S, "string may not be null");
 
     if (S.length() > MAX_CHARS)
